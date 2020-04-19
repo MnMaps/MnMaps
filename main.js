@@ -460,4 +460,22 @@ ol.proj.proj4.register(proj4);
         }
       })
     })
+
+      // Geolocation API
+  const viewProjection = map.getView().getProjection();
+  const geolocation = new ol.Geolocation({
+    tracking: true,
+    trackingOptions: {
+      enableHighAccuracy: true
+    },
+    projection: viewProjection
+  })
+
+  const geolocationElement = document.getElementById('geolocation');
+  geolocation.on('change:position', function(e){
+    let geolocation = this.getPosition();
+    let LongLatGeolocation = ol.proj.toLonLat(geolocation, viewProjection);
+    map.getView().setCenter(geolocation);
+    geolocationElement.innerHTML = 'Long:' + LongLatGeolocation[0].toFixed(3) + ', ' + 'Lat:' + LongLatGeolocation[1].toFixed(3)
+  })
 }
