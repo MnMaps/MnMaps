@@ -14,7 +14,8 @@ ol.proj.proj4.register(proj4);
         view: new ol.View({
             center: [1613326.4816979854, 4818379.7166935075],
             zoom: 11,
-            projection: 'EPSG:3003'
+            projection: 'EPSG:3003',
+            extent: [1603254.394, 4804178.414, 1623254.394, 4828928.414]
         }),
         target:'js-map',
         controls: ol.control.defaults({attribution: false}).extend([attributionControl])
