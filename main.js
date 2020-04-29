@@ -123,105 +123,41 @@ ol.proj.proj4.register(proj4);
           })
         })
 
-      const featureMTBVB = function(feature){
-        let coloreMTBV = feature.get('Colore');
-        if (coloreMTBV === 'Viola'){
+      const featureMTB = function(feature){
+        let coloreMTB = feature.get('Colore');
+        if (coloreMTB === 'Viola'){
           feature.setStyle([ViolaStyle])
         }
-        if (coloreMTBV === 'Verde'){
+        if (coloreMTB === 'Verde'){
           feature.setStyle([VerdeStyle])
         }
-        if (coloreMTBV === 'Blu'){
+        if (coloreMTB === 'Blu'){
           feature.setStyle([BluStyle])
         }
-        if (coloreMTBV === 'Rosso'){
+        if (coloreMTB === 'Rosso'){
           feature.setStyle([RossoStyle])
         }
-        if (coloreMTBV === 'Nero'){
+        if (coloreMTB === 'Nero'){
           feature.setStyle([NeroStyle])
         }
       }
 
-      // MTB Track Valle Benedetta
-      const MTBVB = new ol.layer.VectorImage({
+      // MTB Track
+      const MTBTrack = new ol.layer.VectorImage({
         source: new ol.source.Vector({
-          url: './data/vector/MTBValleBenedetta3003.geojson',
+          url: './data/vector/MTB.geojson',
           format: new ol.format.GeoJSON({
             dataProjection: 'EPSG:3003'
           })
         }),
         visible: true,
-        title: 'MTBVB',
+        title: 'MTB',
         zIndex: 0,
-        style: featureMTBVB
+        minZoom: 13,
+        style: featureMTB
       })
 
-      const featureMTBPC = function(feature){
-        let coloreMTPC = feature.get('colore');
-        if (coloreMTPC === 'Viola'){
-          feature.setStyle([ViolaStyle])
-        }
-        if (coloreMTPC === 'Verde'){
-          feature.setStyle([VerdeStyle])
-        }
-        if (coloreMTPC === 'Blu'){
-          feature.setStyle([BluStyle])
-        }
-        if (coloreMTPC === 'Rosso'){
-          feature.setStyle([RossoStyle])
-        }
-        if (coloreMTPC === 'Nero'){
-          feature.setStyle([NeroStyle])
-        }
-      }
-
-      // MTB Track Popogna Chioma
-      const MTBPC = new ol.layer.VectorImage({
-        source: new ol.source.Vector({
-          url: './data/vector/MTBPopognaChioma3003.geojson',
-          format: new ol.format.GeoJSON({
-            dataProjection: 'EPSG:3003'
-          })
-        }),
-        visible: true,
-        title: 'MTBPC',
-        zIndex: 0,
-        style: featureMTBPC
-      })
-
-      const featureMTBRQ = function(feature){
-        let coloreMTRQ = feature.get('Colore');
-        if (coloreMTRQ === 'Viola'){
-          feature.setStyle([ViolaStyle])
-        }
-        if (coloreMTRQ === 'Verde'){
-          feature.setStyle([VerdeStyle])
-        }
-        if (coloreMTRQ === 'Blu'){
-          feature.setStyle([BluStyle])
-        }
-        if (coloreMTRQ === 'Rosso'){
-          feature.setStyle([RossoStyle])
-        }
-        if (coloreMTRQ === 'Nero'){
-          feature.setStyle([NeroStyle])
-        }
-      }
-
-      // MTB Track Quercianella Romito
-      const MTBRQ = new ol.layer.VectorImage({
-        source: new ol.source.Vector({
-          url: './data/vector/MTBRomitoQuercianella3003.geojson',
-          format: new ol.format.GeoJSON({
-            dataProjection: 'EPSG:3003'
-          })
-        }),
-        visible: true,
-        title: 'MTBRQ',
-        zIndex: 0,
-        style: featureMTBRQ
-      })
-
+      
       //NumberedPath Styling
       const NumberedPathStyle = function(feature){
         //console.log(feature.get('num'));
@@ -416,9 +352,7 @@ ol.proj.proj4.register(proj4);
             NumberedPathWithNumber,
             NumberedPathNoNumber,
             PathTrack,
-            MTBPC,
-            MTBRQ,
-            MTBVB,
+            MTBTrack,
             ooPath,
             ooPathNoNumber,
             StartStop
